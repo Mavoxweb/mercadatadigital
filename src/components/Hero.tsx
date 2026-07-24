@@ -17,7 +17,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
           </div>
           
           <h1 className="hero-title">
-            Soluções criativas e inovadoras <span className="text-brand-gradient">treinamentos, promoção</span> e comunicação.
+            Soluções criativas e inovadoras para <span className="text-brand-gradient">treinamentos, promoção</span> e comunicação.
           </h1>
           
           <p className="hero-description">

@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* ============================================
+     PALETA OFICIAL - MERCADATA DIGITAL
+     Extraída do logo: logo-mercadata-digital.png
+     ============================================ */
+
+  /* Ciano Primário (texto "mercadata" no logo) */
+  --primary: #00AECC;
+  --primary-hover: #0099B5;
+  --primary-dark: #007A99;
+  --primary-light: #E6F7FA;
+  --primary-glow: rgba(0, 174, 204, 0.12);
+  --primary-glow-hover: rgba(0, 174, 204, 0.22);
+
+  /* Gradiente Acento (ícone pixel-ovo do logo: roxo → magenta) */
+  --accent-purple: #6B2D7B;
+  --accent-magenta: #C0427B;
+  --accent-gradient: linear-gradient(145deg, #6B2D7B 0%, #A03574 50%, #C0427B 100%);
+  --accent-gradient-hover: linear-gradient(145deg, #5A2068 0%, #8F2D65 50%, #AB3A6C 100%);
+
+  /* Secundário / Sombra tonal do ciano */
+  --secondary: #007A99;
+  --secondary-light: #CCF0F7;
+
+  /* Neutros */
+  --bg-primary: #ffffff;
+  --bg-secondary: #F0FBFD;   /* ciano muito suave, derivado do primário */
+  --bg-card: #ffffff;
+  --bg-dark: #0D1F26;         /* azul-petróleo escuro, harmônico com o ciano */
+
+  --text-primary: #0D2D3A;    /* azul-petróleo profundo */
+  --text-secondary: #4A6672;  /* cinza-azulado médio */
+  --text-light: #ffffff;
+  --text-muted: #8BA8B4;
+
+  /* Bordas */
+  --border: #D4EEF3;
+  --border-accent: #B8E6EF;   /* derivado do ciano claro */
+
+  /* Sombras com tom ciano */
+  --shadow-sm: 0 2px 8px rgba(0, 174, 204, 0.05);
+  --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 20px 40px rgba(0, 174, 204, 0.10);
+  --shadow-premium: 0 20px 50px -12px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 174, 204, 0.06);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  /* Transições */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Tipografia */
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ===================== Reset & Globals ===================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar com ciano */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb {
+  background: #B8E6EF;
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===================== Tipografia ===================== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.25;
+}
+
+p { color: var(--text-secondary); }
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+button {
+  font-family: var(--font-body);
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+}
+
+/* ===================== Container ===================== */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+@media (max-width: 768px) {
+  .container { padding: 0 1.25rem; }
+}
+
+/* ===================== Botões ===================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  transition: var(--transition-normal);
+  white-space: nowrap;
+}
+
+/* Botão Primário: Ciano */
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--text-light);
+  box-shadow: 0 4px 14px rgba(0, 174, 204, 0.35);
+}
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 174, 204, 0.55);
+}
+.btn-primary:active { transform: translateY(0); }
+
+/* Botão Acento: Gradiente roxo→magenta (do ícone do logo) */
+.btn-accent {
+  background: var(--accent-gradient);
+  color: var(--text-light);
+  box-shadow: 0 4px 14px rgba(192, 66, 123, 0.35);
+}
+.btn-accent:hover {
+  background: var(--accent-gradient-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(192, 66, 123, 0.55);
+}
+
+/* Botão Secundário: Contorno ciano */
+.btn-secondary {
+  background-color: var(--bg-primary);
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+.btn-secondary:hover {
+  background-color: var(--primary-light);
+  transform: translateY(-2px);
+}
+
+/* Botão Outline */
+.btn-outline {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--border-accent);
+}
+.btn-outline:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background-color: var(--primary-light);
+  transform: translateY(-2px);
+}
+
+/* ===================== Animações ===================== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 15px var(--primary-glow); }
+  50%       { box-shadow: 0 0 28px var(--primary-glow-hover); }
+}
+@keyframes float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+/* ===================== Modais ===================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(13, 31, 38, 0.65);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background-color: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-premium);
+  max-width: 650px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  border: 1px solid var(--border-accent);
+  animation: scaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+  border: 1px solid var(--border);
+}
+.modal-close:hover {
+  background-color: var(--primary);
+  color: var(--text-light);
+  transform: rotate(90deg);
+  border-color: var(--primary);
+}

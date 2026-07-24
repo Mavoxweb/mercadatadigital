@@ -716,9 +716,35 @@
 /* Agora usa gradiente roxo→magenta (reflete o ícone da logo) */
 .product-modal-banner {
   background: var(--accent-gradient) !important;
+}/* ── Botão Flutuante Mobile (Mobile Floating CTA) ───── */
+.mobile-floating-cta {
+  display: none;
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 95;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #ffffff;
+  padding: 0.8rem 1.35rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 700;
+  border: none;
+  box-shadow: 0 10px 25px rgba(0, 174, 204, 0.45);
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* ── Responsividade ───────────────────────────────── */
+.mobile-floating-cta:active {
+  transform: scale(0.94);
+  box-shadow: 0 4px 12px rgba(0, 174, 204, 0.3);
+}
+
+/* ── Responsividade & Otimização Mobile ─────────────── */
 @media (max-width: 1024px) {
   .hero-container {
     grid-template-columns: 1fr;
@@ -738,23 +764,112 @@
 }
 
 @media (max-width: 768px) {
+  /* Touch target ergonomics */
+  button, .btn {
+    min-height: 46px;
+    touch-action: manipulation;
+  }
+
+  /* Previne zoom automático do iOS ao focar em inputs */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+
+  /* Exibe o botão flutuante no mobile */
+  .mobile-floating-cta {
+    display: flex;
+  }
+
   .navbar { height: 70px; }
-  .mobile-toggle { display: block; }
+  .mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    border-radius: var(--radius-sm);
+  }
+
   .nav-links-desktop,
   .nav-cta-desktop { display: none; }
 
-  .hero-section {
-    padding-top: 120px;
-    padding-bottom: 50px;
-  }
-  .hero-title {
-    font-size: 2.35rem;
-    letter-spacing: -0.8px;
+  .nav-links-mobile {
+    top: 70px;
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+    border-bottom-left-radius: var(--radius-md);
+    border-bottom-right-radius: var(--radius-md);
   }
 
-  .solutions-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .hero-section {
+    padding-top: 110px;
+    padding-bottom: 45px;
+  }
+
+  .hero-badge {
+    font-size: 0.8rem;
+    padding: 5px 12px;
+  }
+
+  .hero-title {
+    font-size: 2.15rem;
+    letter-spacing: -0.6px;
+    line-height: 1.22;
+  }
+
+  .hero-description {
+    font-size: 0.98rem;
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-image {
+    max-height: 320px;
+    object-fit: contain;
+  }
+
+  .solutions-section,
+  .products-section,
+  .about-section {
+    padding: 60px 0;
+  }
+
+  .solutions-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .products-grid  { grid-template-columns: 1fr; gap: 1.5rem; }
   .stats-grid     { grid-template-columns: 1fr; gap: 1rem; }
+
+  .solutions-card,
+  .product-card {
+    padding: 1.5rem;
+  }
+
+  .product-card-footer .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .about-text-column .section-title {
+    text-align: center !important;
+  }
+
+  .about-text-column .btn {
+    width: 100%;
+    justify-content: center;
+  }
 
   .footer-bottom-container {
     flex-direction: column;
@@ -765,4 +880,67 @@
 
   .form-grid-2  { grid-template-columns: 1fr !important; }
   .modal-grid   { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
+
+  /* Modal touch responsiveness */
+  .modal-overlay {
+    padding: 0.75rem;
+  }
+
+  .modal-content {
+    width: 100% !important;
+    max-height: 88vh;
+    padding: 1.5rem !important;
+    border-radius: 20px !important;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .modal-close {
+    width: 44px !important;
+    height: 44px !important;
+    top: 0.75rem !important;
+    right: 0.75rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    border-radius: 50% !important;
+  }
 }
+
+@media (max-width: 480px) {
+  .container {
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+  }
+
+  .hero-title {
+    font-size: 1.85rem;
+  }
+
+  .section-title {
+    font-size: 1.65rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .hero-trust {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .stats-box {
+    padding: 1.25rem !important;
+  }
+
+  .mobile-floating-cta {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.7rem 1.15rem;
+    font-size: 0.88rem;
+  }
+}
+

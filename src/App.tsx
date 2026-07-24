@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Sparkles } from 'lucide-react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Solutions } from './components/Solutions';
@@ -95,6 +96,16 @@ function App() {
         onClose={handleCloseProduct} 
         onOpenDemo={handleOpenProductDemo}
       />
+
+      {/* Floating Mobile Action Button */}
+      <button 
+        className="mobile-floating-cta" 
+        onClick={handleOpenDemo}
+        aria-label="Solicitar demonstração"
+      >
+        <Sparkles size={18} />
+        <span>Solicitar Demo</span>
+      </button>
     </>
   );
 }
